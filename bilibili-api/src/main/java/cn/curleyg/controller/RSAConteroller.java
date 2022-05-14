@@ -5,15 +5,14 @@ import cn.curleyg.utils.RSAUtil;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.security.interfaces.RSAPublicKey;
 
 /**
- * 城南花已开<br>
+ * <p>
+ * 获取RSA公钥
+ * </p>
  *
- * @Description: <br>
- * @Project: <br>
- * @CreateDate: Created in 2022/5/14 00:47 <br>
- * @Author: Wang
+ * @author wang
+ * @since 2022-05-13
  */
 @RestController
 public class RSAConteroller {

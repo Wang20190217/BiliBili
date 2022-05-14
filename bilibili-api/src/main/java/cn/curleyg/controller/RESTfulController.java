@@ -1,8 +1,7 @@
 package cn.curleyg.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
 
+import org.springframework.web.bind.annotation.*;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,6 +17,7 @@ import java.util.Map;
 public class RESTfulController {
 
     private final Map<Integer, Map<String, Object>> dataMap;
+
 
     public RESTfulController(){
         dataMap = new HashMap<>();

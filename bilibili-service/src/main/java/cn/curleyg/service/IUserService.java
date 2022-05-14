@@ -14,4 +14,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface IUserService extends IService<User> {
 
     void addUser(User user);
+
+    String login(User user) throws Exception;
+
+    User getUserInfo(Long id);
 }

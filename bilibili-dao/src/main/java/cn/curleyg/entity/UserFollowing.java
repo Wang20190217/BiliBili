@@ -1,79 +1,61 @@
 package cn.curleyg.entity;
 
-import cn.curleyg.enums.StatusEnum;
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
  * <p>
- * 用户表
+ * 用户关注表
  * </p>
  *
- * @author wang
- * @since 2022-05-13
+ * @author Wang
+ * @since 2022-05-14
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName("t_user")
-public class User implements Serializable {
+@TableName("t_user_following")
+public class UserFollowing implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     /**
-     * 主键
+     * 主键id
      */
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     /**
-     * 手机号
+     * 用户id
      */
-    private String phone;
+    private Long userId;
 
     /**
-     * 邮箱
+     * 关注用户id
      */
-    private String email;
+    private Long followingId;
 
     /**
-     * 密码
+     * 关注分组id
      */
-    private String password;
-
-    /**
-     * 盐值
-     */
-    private String salt;
+    private Long groupId;
 
     /**
      * 创建时间
      */
     private Date createTime;
-
     /**
-     * 更新时间
+     * 删除标记
      */
-    private Date updateTime;
-
-    /**
-     * 用户状态 枚举
-     */
-     private StatusEnum status;
-
-    /**
-     * 用户信息
-     */
-    @TableField(exist=false)
-    private UserInfo userInfo;
+    @TableLogic
+    private String deleted;
 
 }

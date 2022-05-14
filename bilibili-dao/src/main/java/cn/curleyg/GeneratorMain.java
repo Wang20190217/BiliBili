@@ -19,7 +19,7 @@ public class GeneratorMain {
     public static void main(String[] args) {
         FastAutoGenerator.create("jdbc:mysql://127.0.0.1:3306/bilibili?&useSSL=false&serverTimezone=UTC", "root", "123456")
                 .globalConfig(builder -> {
-                    builder.author("wang") // 设置作者
+                    builder.author("Wang") // 设置作者
                             .fileOverride() // 覆盖已生成文件
                             .outputDir("D:\\project\\BiliBili\\bilibili-dao\\src\\main\\java"); // 指定输出目录
                 })
@@ -28,7 +28,7 @@ public class GeneratorMain {
                             .pathInfo(Collections.singletonMap(OutputFile.mapperXml, "D:\\project\\BiliBili\\bilibili-dao\\src\\main\\resources\\mapper")); // 设置mapperXml生成路径
                 })
                 .strategyConfig(builder -> {
-                    builder.addInclude("t_user_info") // 设置需要生成的表名
+                    builder.addInclude("t_following_group") // 设置需要生成的表名
                             .addTablePrefix("t_"); // 设置过滤表前缀
                 })
                 .templateEngine(new FreemarkerTemplateEngine()) // 使用Freemarker引擎模板，默认的是Velocity引擎模板
