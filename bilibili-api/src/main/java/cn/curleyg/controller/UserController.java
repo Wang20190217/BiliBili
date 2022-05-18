@@ -54,7 +54,6 @@ public class UserController {
     public ResponseObject getUserInfo() {
         Long currentUserId = support.getCurrentUserId();
         User userInfo = userService.getUserInfo(currentUserId);
-        System.out.println(userInfo);
         return ResponseObject.success(userInfo);
     }
 

@@ -3,11 +3,11 @@ package cn.curleyg.controller;
 import cn.curleyg.entity.UserInfo;
 import cn.curleyg.service.IUserInfoService;
 import cn.curleyg.support.Support;
+import cn.curleyg.tools.PageEntity;
 import cn.curleyg.tools.ResponseObject;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -20,10 +20,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserInfoController {
     @Autowired
-    IUserInfoService userInfoService;
+    private IUserInfoService userInfoService;
 
     @Autowired
-    Support support;
+    private Support support;
 
     /***
      * @description: 修改用户登录信息
@@ -39,4 +39,20 @@ public class UserInfoController {
         return ResponseObject.success();
     }
 
+     /***
+      * @description: 根据用户昵称查询用户,已关注（未关注）区别
+      * @param: [userInfo]
+      * @since: 2022/5/15 20:53
+     */
+    @GetMapping("/user-info")
+    public ResponseObject queryUserInfo(@RequestParam Integer pageNum,@RequestParam Integer pageSize,String search) {
+        //从token中拿用户id
+        Long currentUserId = support.getCurrentUserId();
+        PageEntity pageEntity = new PageEntity();
+        pageEntity.setPageNum(pageNum);
+        pageEntity.setPageSize(pageSize);
+        pageEntity.setSearchStr(search);
+        IPage<UserInfo> infoIPage = userInfoService.queryUserInfo(pageEntity,currentUserId);
+        return ResponseObject.success(infoIPage);
+    }
 }

@@ -8,6 +8,7 @@ import cn.curleyg.enums.StatusEnum;
 import cn.curleyg.exception.ConditionException;
 import cn.curleyg.mapper.UserInfoMapper;
 import cn.curleyg.mapper.UserMapper;
+import cn.curleyg.service.IUserInfoService;
 import cn.curleyg.service.IUserService;
 import cn.curleyg.utils.MD5Util;
 import cn.curleyg.utils.RSAUtil;
@@ -35,6 +36,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     private UserMapper userMapper;
     @Autowired
     private UserInfoMapper userInfoMapper;
+    @Autowired
+    private IUserInfoService  userInfoService;
 
     @Override
     public void addUser(User user) {
@@ -114,7 +117,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     @Override
     public User getUserInfo(Long id) {
         User user = userMapper.selectById(id);
-        user.setUserInfo(userInfoMapper.selectOne(new QueryWrapper<UserInfo>().eq("user_id", id)));
+        user.setUserInfo(userInfoService.getUserInfoByUserId(id));
         return user;
     }
 }

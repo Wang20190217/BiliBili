@@ -1,7 +1,11 @@
 package cn.curleyg.service;
 
 import cn.curleyg.entity.UserInfo;
+import cn.curleyg.tools.PageEntity;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,5 +17,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IUserInfoService extends IService<UserInfo> {
     void updateUserInfo(UserInfo userInfo);
+    UserInfo getUserInfoByUserId(Long id);
+
+    IPage<UserInfo> queryUserInfo(PageEntity pageEntity,Long id);
+
 
 }

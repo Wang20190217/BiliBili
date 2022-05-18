@@ -1,7 +1,9 @@
 package cn.curleyg.entity;
 
 import cn.curleyg.enums.GenderEnum;
+import cn.curleyg.tools.PageEntity;
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
@@ -24,7 +26,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @TableName("t_user_info")
-public class UserInfo implements Serializable {
+public class UserInfo  extends PageEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -74,5 +76,10 @@ public class UserInfo implements Serializable {
      */
     private Date updateTime;
 
+    /**
+     * 是否共同关注
+     */
+    @TableField(exist = false)
+    private Boolean followed;
 
 }

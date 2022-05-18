@@ -1,6 +1,7 @@
 package cn.curleyg.entity;
 
 import cn.curleyg.enums.StatusEnum;
+import cn.curleyg.tools.PageEntity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -25,7 +26,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @TableName("t_user")
-public class User implements Serializable {
+public class User extends PageEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

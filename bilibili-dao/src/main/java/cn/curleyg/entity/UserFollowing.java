@@ -1,9 +1,7 @@
 package cn.curleyg.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.baomidou.mybatisplus.annotation.TableName;
+import cn.curleyg.tools.PageEntity;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,7 +21,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @TableName("t_user_following")
-public class UserFollowing implements Serializable {
+public class UserFollowing extends PageEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -57,5 +55,8 @@ public class UserFollowing implements Serializable {
      */
     @TableLogic
     private String deleted;
+
+    @TableField(exist = false)
+    private UserInfo userInfo;
 
 }

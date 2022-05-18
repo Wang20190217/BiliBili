@@ -16,6 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class RSAConteroller {
+    /*
+     * @description: 获取RSA公钥
+     * @param: []
+     * @since: 2022/5/15 18:46
+    */
     @GetMapping("rsa-pks")
     public ResponseObject getRSApublickey() {
         String publicKeyStr = RSAUtil.getPublicKeyStr();

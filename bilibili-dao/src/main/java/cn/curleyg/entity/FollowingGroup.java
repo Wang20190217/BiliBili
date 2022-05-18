@@ -1,17 +1,15 @@
 package cn.curleyg.entity;
 
 import cn.curleyg.enums.TypeEnum;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.baomidou.mybatisplus.annotation.TableName;
+import cn.curleyg.tools.PageEntity;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 /**
  * <p>
@@ -25,7 +23,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @TableName("t_following_group")
-public class FollowingGroup implements Serializable {
+public class FollowingGroup extends PageEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -44,7 +42,7 @@ public class FollowingGroup implements Serializable {
      * 关注分组名称
      */
     private String name;
-
+    //TODO 分组说明
     /**
      * 关注分组类型：0特别关注  1悄悄关注 2默认分组  3用户自定义分组
      */
@@ -64,5 +62,9 @@ public class FollowingGroup implements Serializable {
      */
     @TableLogic
     private String deleted;
+
+    @TableField(exist=false)
+    private List<UserInfo> userList;
+
 
 }
