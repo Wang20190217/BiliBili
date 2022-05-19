@@ -1,6 +1,8 @@
 package cn.curleyg.controller;
 
 
+import cn.curleyg.annotation.ApiLimitedRole;
+import cn.curleyg.constant.AuthRoleConstant;
 import cn.curleyg.entity.UserMoments;
 import cn.curleyg.service.IUserMomentsService;
 import cn.curleyg.support.Support;
@@ -30,6 +32,7 @@ public class UserMomentsController {
     Support support;
 
     // TODO 发布存在状态，草稿  内容详情表
+    @ApiLimitedRole(limitedRoleCodeList = {AuthRoleConstant.ROLE_LV1})
     @PostMapping("/user-moments")
     public ResponseObject addUserMoments(@RequestBody UserMoments userMoments) throws Exception {
         Long currentUserId = support.getCurrentUserId();

@@ -1,6 +1,7 @@
 package cn.curleyg.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
@@ -51,6 +52,7 @@ public class AuthRoleElementOperation implements Serializable {
     /**
      * 页面元素操作表
      */
+    @TableField(exist = false)
     private  AuthElementOperation authElementOperation;
 
 }

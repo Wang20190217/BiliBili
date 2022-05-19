@@ -1,6 +1,7 @@
 package cn.curleyg.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
@@ -42,5 +43,16 @@ public class UserRole implements Serializable {
      * 创建时间
      */
     private Date createTime;
+
+    /**
+     * 角色名称
+     */
+    @TableField(exist = false)
+    private String roleName;
+    /**
+     * 角色编号
+     */
+    @TableField(exist = false)
+    private String roleCode;
 
 }

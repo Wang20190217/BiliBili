@@ -1,14 +1,18 @@
 package cn.curleyg.service.impl;
 
+import cn.curleyg.entity.AuthRoleElementOperation;
+import cn.curleyg.entity.AuthRoleMenu;
 import cn.curleyg.entity.UserRole;
 import cn.curleyg.mapper.UserRoleMapper;
-import cn.curleyg.service.IUserRoleService;
+import cn.curleyg.service.*;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -23,11 +27,10 @@ public class UserRoleServiceImpl extends ServiceImpl<UserRoleMapper, UserRole> i
 
     @Autowired
     UserRoleMapper userRoleMapper;
+
     @Override
     public List<UserRole> getUserRoleListByUserId(Long userId) {
-        QueryWrapper<UserRole> queryWrapper=new QueryWrapper<>();
-        queryWrapper.eq("user_id",userId);
-        List<UserRole> userRoles = userRoleMapper.selectList(queryWrapper);
+        List<UserRole> userRoles = userRoleMapper.getUserRoleListByUserId(userId);
         return userRoles;
     }
 }
